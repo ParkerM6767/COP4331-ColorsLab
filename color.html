@@ -10,6 +10,11 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
     <script src="js/code.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            readCookie();
+        }, false);
+    </script>
 </head>
 
 <body class="d-flex flex-column min-vh-100" style="background-color: rgb(25,25,25);">
@@ -38,17 +43,46 @@
             <h4>Search Colors</h4>
             <hr>
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn btn-primary" type="submit">Search Colors</button>
+                <input class="form-control me-2" id="searchText" type="search" placeholder="Search"
+                    aria-label="Search" />
+                <button class="btn btn-primary" type="button" onclick="searchColor()">Search Colors</button>
             </form>
             <hr>
+
+            <h4>Add New Color</h4>
+            <hr>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" id="colorText" placeholder="Color Name" aria-label="Color Nmae" />
+                <button class="btn btn-success" type="button" onclick="addColor()">Add Color</button>
+            </form>
+            <hr>
+
+            <div id="alertContainer">
+
+            </div>
         </div>
+
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Color Name</th>
+                </tr>
+            </thead>
+            <tbody id="colorRowsTable">
+                
+            </tbody>
+        </table>
+
+
 
     </main>
 
     <footer class="text-center p-3 footer">
         <hr>
-        <p>&copy; 2026 Stephen Meikle — COP4331</p>
+        <p>&copy; 2026 Stephen Meikle &#8212; COP4331</p>
     </footer>
 </body>
 
