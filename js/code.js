@@ -91,3 +91,96 @@ function readCookie()
         document.getElementById("userWelcome").innerHTML = `Hello, ${firstName}!`
 	}
 }
+
+function doLogout()
+{
+	userId = 0;
+	firstName = "";
+	lastName = "";
+	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+	window.location.href = "index.html";
+}
+
+function addColor()
+{
+	let newColor = document.getElementById("colorText").value;
+	//document.getElementById("colorAddResult").innerHTML = "";
+
+	let tmp = {color:newColor,userId,userId};
+	let jsonPayload = JSON.stringify( tmp );
+
+	let url = api_url + '/AddColor.php';
+	
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				document.getElementById("alertContainer").innerHTML = `
+                <div class="alert alert-success" role="alert">
+                    Color added successfully!
+                </div>`;
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("alertContainer").innerHTML = `
+                <div class="alert alert-danger" role="alert">
+                    Error when adding color: ${err.message}
+                </div>`;
+	}
+	
+}
+
+function searchColor()
+{
+	let srch = document.getElementById("searchText").value;
+	document.getElementById("alertContainer").innerHTML = "";
+	
+	let colorList = "";
+
+	let tmp = {search:srch,userId:userId};
+	let jsonPayload = JSON.stringify( tmp );
+
+	let url = api_url + '/SearchColors.php';
+	
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				document.getElementById("alertContainer").innerHTML = `
+                <div class="alert alert-success" role="alert">
+                    Colors found!
+                </div>`;
+				let jsonObject = JSON.parse( xhr.responseText );
+				
+				for( let i=0; i<jsonObject.results.length; i++ )
+				{
+					colorList += colorList += `<tr><th scope="row">${i + 1}</th><td>${jsonObject.results[i]}</td></tr>`;
+				}
+				
+				document.getElementById("colorRowsTable").innerHTML = colorList;
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		document.getElementById("alertContainer").innerHTML = `
+                <div class="alert alert-danger" role="alert">
+                    Error when searching for color: ${err.message}
+                </div>`;
+	}
+	
+}
