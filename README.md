@@ -21,10 +21,6 @@ A simple CRUD application with basic authentication and protected pages using LA
 
 ```bash
 mysql -u root -p
-
-# Create Database
-CREATE DATABASE COP4331;
-
 ```
 
 In mySQL command line:
@@ -33,13 +29,6 @@ In mySQL command line:
 -- Create Database
 CREATE DATABASE COP4331;
 USE COP4331;
-```
-
-```sql
-CREATE TABLE `COP4331`.`Users` ( `ID` INT NOT NULL AUTO_INCREMENT , `FirstName`
-VARCHAR(50) NOT NULL DEFAULT '' , `LastName` VARCHAR(50) NOT NULL DEFAULT '' , `Login`
-VARCHAR(50) NOT NULL DEFAULT '' , `Password` VARCHAR(50) NOT NULL DEFAULT '' ,
-PRIMARY KEY (`ID`)) ENGINE = InnoDB;
 ```
 
 ```sql
