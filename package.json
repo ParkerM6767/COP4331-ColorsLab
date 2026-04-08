@@ -1,0 +1,10 @@
+{
+  "name": "cop4331-colorslab",
+  "version": "1.1.0",
+  "devDependencies": {
+    "eslint": "^9.39.4",
+    "htmlhint": "^1.9.2",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^36.0.1"
+  }
+}

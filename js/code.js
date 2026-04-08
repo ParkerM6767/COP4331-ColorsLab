@@ -1,4 +1,4 @@
-let api_url = "./LAMPAPI/"
+let api_url = "./LAMPAPI/";
 
 async function doLogin() {
 
@@ -106,7 +106,7 @@ function addColor()
 	let newColor = document.getElementById("colorText").value;
 	//document.getElementById("colorAddResult").innerHTML = "";
 
-	let tmp = {color:newColor,userId,userId};
+	let tmp = {color:newColor, userId: userId};
 	let jsonPayload = JSON.stringify( tmp );
 
 	let url = api_url + '/AddColor.php';
