@@ -1,4 +1,5 @@
 <?php
+
 $env = parse_ini_file("../db_config.ini");
 $inData = getRequestInfo();
 
@@ -33,5 +34,3 @@ function returnWithError($err)
 	$retValue = '{"error":"' . $err . '"}';
 	sendResultInfoAsJson($retValue);
 }
-
-?>
