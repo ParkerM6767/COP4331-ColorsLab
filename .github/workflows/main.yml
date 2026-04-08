@@ -28,4 +28,4 @@ jobs:
       - name: Run PHPCS
         # This assumes you have a phpcs.xml config or want to use PSR12
         # Replace 'src/' with your application's PHP directory (e.g., 'app/', 'public/')
-        run: phpcs --standard=PSR12 LAMPAPI/
+        run: phpcs LAMPAPI/
