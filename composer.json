@@ -1,0 +1,21 @@
+{
+    "name": "parkerm6767/cop4331colorslab",
+    "description": "Colors lab for COP4331 with linting support.",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.11"
+    },
+    "scripts": {
+        "lint": "phpcs --standard=PSR12 src/",
+        "fix": "phpcbf --standard=PSR12 src/"
+    }
+}
